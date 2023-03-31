@@ -50,8 +50,18 @@ function checkAnswer(currentLevel){
       setTimeout(function(){
         $('body').removeClass('game-over'); }, 200);
       
+        startOver();
      }
+
+     
   }
+
+function startOver() {
+  level = 0;
+  gamePattern = [];
+  started = false;
+
+}
 
 
 function nextSequence() {
