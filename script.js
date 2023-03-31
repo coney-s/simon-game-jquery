@@ -22,9 +22,41 @@ $(".btn").click(function() {
   playSound(userChosenColour);
   animatePress(userChosenColour);
 
+  checkAnswer(userClickedPattern.length-1);
+
 });
 
+
+
+function checkAnswer(currentLevel){
+
+  if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
+     console.log("Success");
+
+     if (userClickedPattern.length === gamePattern.length){
+
+      setTimeout(function() {
+        nextSequence(); }, 1000);
+      }
+     } else {
+      console.log("Wrong");
+
+      playSound("wrong");
+
+      $('body').addClass('game-over');
+
+      $('h1').text("Game Over, Press Any Key to Restart");
+
+      setTimeout(function(){
+        $('body').removeClass('game-over'); }, 200);
+      
+     }
+  }
+
+
 function nextSequence() {
+
+  userClickedPattern = [];
 
   level++;
 
